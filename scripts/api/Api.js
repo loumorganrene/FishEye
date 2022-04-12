@@ -14,7 +14,6 @@ class Api {
             .catch(err => console.log('an error occurs', err))
     }
 }
-
 class PhotographerApi extends Api {
     /**
      * 
@@ -27,4 +26,5 @@ class PhotographerApi extends Api {
     async getPhotographers() {
         return await this.get()
     }
+
 }

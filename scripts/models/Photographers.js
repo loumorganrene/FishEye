@@ -1,14 +1,14 @@
 // Photographers cards constructor pattern
 // Parent
 class Photographer {
-    constructor(photographers) {
-        this._id = photographers.id
-        this._portrait = photographers.portrait
-        this._name = photographers.name
-        this._city = photographers.city
-        this._country = photographers.country
-        this._tagline = photographers.tagline
-        this._price = photographers.price
+    constructor(data) {
+        this._id = data.id
+        this._portrait = data.portrait
+        this._name = data.name
+        this._city = data.city
+        this._country = data.country
+        this._tagline = data.tagline
+        this._price = data.price
     }
 
     get id() {
