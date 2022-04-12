@@ -1,47 +1,20 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-            console.log(photographers);
-            console.log("-------");
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+class Index {
+    constructor() {
+        this.$photographersWrapper = document.querySelector(".photographer_section")
+        this.photographersApi = new PhotographerApi("/data/photographers.json")
     }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+    async main() {
+        const photographers = await this.photographersApi.getPhotographers()
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+        photographers
+            .forEach(photographer => {
+            const Templates = new PhotographerCard(photographer)
+            this.$photographersWrapper.appendChild(Templates.createPhotographerCard())
+        })
+    }
+}
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
+const index = new Index()
+index.main()
     
