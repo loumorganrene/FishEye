@@ -7,7 +7,7 @@ class PhotographerCard {
         const $wrapper= document.createElement( 'article' );
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", `${this._photographer.portrait}`);
+        img.setAttribute("src", `assets/photographers/portraits/${this._photographer.portrait}`);
         const h2 = document.createElement( 'h2' );
         h2.textContent = `${this._photographer.name}`;
         const location = document.createElement( 'p' );
