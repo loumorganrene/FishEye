@@ -1,3 +1,5 @@
+import { PhotographerApi } from "./api/Api.js";
+import { PhotographerCard } from "./templates/PhotographerCard.js";
 class App {
     constructor() {
         this.$photographersWrapper = document.querySelector('.photographer_section')

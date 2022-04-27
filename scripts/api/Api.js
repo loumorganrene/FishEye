@@ -10,11 +10,11 @@ class Api {
     async get() {
         return fetch(this._url)
             .then(res => res.json())
-            .then(res => res.data)
+            .then(res => res.photographers)
             .catch(err => console.log('an error occurs', err))
     }
 }
-class PhotographerApi extends Api {
+export class PhotographerApi extends Api {
     /**
      * 
      * @param {string} url 
@@ -28,7 +28,7 @@ class PhotographerApi extends Api {
     }
 }
 
-class MediaApi extends Api {
+export class MediaApi extends Api {
     /**
      * 
      * @param {string} url 
@@ -36,8 +36,11 @@ class MediaApi extends Api {
     constructor(url) {
         super(url)
     }
-
+// il faudrait plutôt utiliser un adaptater pattern
     async getMedias() {
-        return await this.get()
+        return fetch(this._url)
+            .then(res => res.json())
+            .then(res => res.media)
+            .catch(err => console.log('an error occurs', err))
     }
 }
