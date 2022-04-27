@@ -30,11 +30,25 @@ a {
     text-decoration: none;
 }
 
-a:focus-visible {
+a:focus {
     outline-width: 2px;
     outline-style: solid;
     outline-color: var(--primary-clr);
     border-radius: 10px;
+}
+
+/* Apply if navigator support :focus-visible (mostly for safari) */
+@supports selector(:focus-visible){
+    a:focus {
+        outline: none;
+    }
+
+    a:focus-visible {
+        outline-width: 2px;
+        outline-style: solid;
+        outline-color: var(--primary-clr);
+        border-radius: 10px;
+    }
 }
 
 .logo {
