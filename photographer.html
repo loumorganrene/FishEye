@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
+    <script type="module" src="/scripts/photographer.js"></script>
+    <title>Photographer</title>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header class="header" role="banner">
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye - Allez à la page d'accueil" />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <header class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      </header>
+
     </main>
+
     <div id="contact_modal">
 			<div class="modal">
 				<header>

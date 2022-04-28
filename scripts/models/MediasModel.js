@@ -1,6 +1,6 @@
 // Media constructor pattern
 // Parent
-class Media {
+export class Media {
     constructor(data) {
         this._id = data.id
         this._photographer = data.photographerId

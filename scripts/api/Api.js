@@ -7,10 +7,10 @@ class Api {
         this._url = url
     }
 
-    async get() {
+    async get(property) {
         return fetch(this._url)
             .then(res => res.json())
-            .then(res => res.photographers)
+            .then(res => res[property])
             .catch(err => console.log('an error occurs', err))
     }
 }
@@ -24,7 +24,7 @@ export class PhotographerApi extends Api {
     }
 
     async getPhotographers() {
-        return await this.get()
+        return await this.get('photographers')
     }
 }
 
@@ -38,9 +38,6 @@ export class MediaApi extends Api {
     }
 // il faudrait plutôt utiliser un adaptater pattern
     async getMedias() {
-        return fetch(this._url)
-            .then(res => res.json())
-            .then(res => res.media)
-            .catch(err => console.log('an error occurs', err))
+        return this.get('media')
     }
 }

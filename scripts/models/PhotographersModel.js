@@ -1,6 +1,6 @@
-// Photographers cards constructor pattern
+// datas cards constructor pattern
 // Parent
-class Photographer {
+export class Photographer {
     constructor(data) {
         this._id = data.id
         this._portrait = data.portrait

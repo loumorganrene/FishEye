@@ -1,11 +1,11 @@
-export class PhotographerCard {
+export class PhotographerInfos {
     constructor (photographer) {
         this._photographer = photographer
     }
 
-    createPhotographerCard() {
+    createPhotographerInfos() {
         const docFrag = document.createDocumentFragment();
-        const $wrapper = document.createElement( 'article' );
+        $wrapper = document.querySelector( '.photograph-header' )
 
         // First section of a photographer card
         const figure = document.createElement( 'figure' );
@@ -46,15 +46,9 @@ export class PhotographerCard {
         tagline.classList.add( "tagline" );
         tagline.textContent = `${this._photographer.tagline}`;
 
-        // Photographer price per day
-        const price = document.createElement( 'p' );
-        price.classList.add( "price" );
-        price.textContent = `${this._photographer.price}€/jour`;
-
         // Push portrait & name in link
         desc.appendChild(location);
         desc.appendChild(tagline);
-        desc.appendChild(price);
 
         // Push first & second section into Docfragment
         $wrapper.appendChild(figure);
