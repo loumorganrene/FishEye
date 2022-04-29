@@ -1,14 +1,14 @@
-// datas cards constructor pattern
+// photographers cards constructor pattern
 // Parent
 export class Photographer {
-    constructor(data) {
-        this._id = data.id
-        this._portrait = data.portrait
-        this._name = data.name
-        this._city = data.city
-        this._country = data.country
-        this._tagline = data.tagline
-        this._price = data.price
+    constructor(photographer) {
+        this._id = photographer.id
+        this._portrait = photographer.portrait
+        this._name = photographer.name
+        this._city = photographer.city
+        this._country = photographer.country
+        this._tagline = photographer.tagline
+        this._price = photographer.price
     }
 
     get id() {

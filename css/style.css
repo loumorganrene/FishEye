@@ -91,7 +91,7 @@ a:focus {
     padding: 0;
 }
 
-.photographer_pres img {
+.photographer_pres img, .photographer_portrait {
     height: 200px;
     width: 200px;
     border-radius: 50%;
