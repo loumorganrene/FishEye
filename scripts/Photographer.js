@@ -1,6 +1,7 @@
 import { MediaApi, PhotographerApi } from "./api/Api.js";
 import { Photographer } from "./models/PhotographersModel.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
+
 class App {
     constructor() {
         this.$bannerWrapper = document.querySelector('.photograph-header')
@@ -24,12 +25,12 @@ class App {
         //Applying template for the photogapher page banner
         const Template = new PhotographerBanner(photographer)
         this.$bannerWrapper.appendChild(Template.createPhotographerBanner())
-
     }
 
 }
 
 const app = new App()
 app.main()
+
 
 

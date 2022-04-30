@@ -1,5 +1,12 @@
 #contact_modal {
     display: none;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%,0);
+    top: 50px;
+    height: 100%;
+    width: 60vw;
 }
 
 .photograph-header {
@@ -44,6 +51,7 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 1rem;
 }
 
 .photographer_portrait {
@@ -58,7 +66,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 0 35px 30px;
     margin: auto;
 }
 
@@ -69,12 +77,15 @@
 
 .modal header img {
     cursor: pointer;
+    width: 2rem;
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 3rem;
     font-weight: normal;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 form {
@@ -86,7 +97,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 26px;
 }
 
 form div {
@@ -94,24 +105,27 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: .5rem;
 }
 
 form input, form textarea {
-    width: 100%;
-    height: 68px;
+    width: 98%;
+    height: 4rem;
     border: none;
     border-radius: 5px;
-
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    margin: 0;
 }
 
 form textarea {
     resize: none;
-    padding: .9rem .1rem;
     height: 200px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-img:focus {
+.modal header img:focus {
     outline-width: 2px;
     outline-style: solid;
     outline-offset: .3rem;
@@ -121,11 +135,11 @@ img:focus {
 
 /* Apply if navigator support :focus-visible (mostly for safari) */
 @supports selector(:focus-visible){
-    img:focus {
+    .modal header img:focus {
         outline: none;
     }
 
-    img:focus-visible {
+    .modal header img:focus-visible {
         outline-width: 2px;
         outline-style: solid;
         outline-color: var(--primary-clr);
