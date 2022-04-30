@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script type="module" src="/scripts/photographer.js"></script>
+    <script src="/scripts/utils/contactForm.js" defer></script>
     <title>Photographer</title>
   <body>
     <header class="header" role="banner">
@@ -27,17 +28,28 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img id="close_modal-icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" tabindex=0 onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+				<form name="contact_form" action="index.html" method="get">
+          <div class="formData">
+            <label for="first">Prénom</label><br>
+            <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+          </div>
+          <div class="formData">
+            <label for="last">Nom</label><br>
+            <input class="text-control" type="text" id="last" name="last" minlength="2" /><br>
+          </div>
+          <div class="formData">
+            <label for="email">E-mail</label><br>
+            <input class="text-control" type="email" id="email" name="email" /><br>
+          </div>
+          <div class="formData">
+            <label for="message">Votre message</label><br>
+            <textarea class="text-control" id="message" name="message" rows="8" cols="83"></textarea>
+          </div>
+          <button class="contact_button" type="submit" value="Envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

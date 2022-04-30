@@ -22,7 +22,7 @@
 
 .photographer-page_desc p {
     margin: 0;
-    margin-bottom: .9rem;
+    margin-bottom: .8rem;
 }
 
 .photographer-page_desc .location {
@@ -97,9 +97,39 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+
+}
+
+form textarea {
+    resize: none;
+    padding: .9rem .1rem;
+    height: 200px;
+}
+
+img:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: .3rem;
+    outline-color: var(--primary-clr);
+    border-radius: 10px;
+}
+
+/* Apply if navigator support :focus-visible (mostly for safari) */
+@supports selector(:focus-visible){
+    img:focus {
+        outline: none;
+    }
+
+    img:focus-visible {
+        outline-width: 2px;
+        outline-style: solid;
+        outline-color: var(--primary-clr);
+        border-radius: 10px;
+    }
+
 }

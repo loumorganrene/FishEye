@@ -30,22 +30,38 @@ a {
     text-decoration: none;
 }
 
-a:focus {
+a:focus, input:focus, textarea:focus {
     outline-width: 2px;
     outline-style: solid;
     outline-color: var(--primary-clr);
     border-radius: 10px;
 }
 
+button:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: .3rem;
+    outline-color: var(--primary-clr);
+    border-radius: 10px;
+}
+
 /* Apply if navigator support :focus-visible (mostly for safari) */
 @supports selector(:focus-visible){
-    a:focus {
+    a:focus, input:focus, button:focus, textarea:focus {
         outline: none;
     }
 
-    a:focus-visible {
+    a:focus-visible, input:focus-visible, textarea:focus-visible {
         outline-width: 2px;
         outline-style: solid;
+        outline-color: var(--primary-clr);
+        border-radius: 10px;
+    }
+
+    button:focus-visible {
+        outline-width: 2px;
+        outline-style: solid;
+        outline-offset: .3rem;
         outline-color: var(--primary-clr);
         border-radius: 10px;
     }
