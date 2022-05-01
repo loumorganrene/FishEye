@@ -51,7 +51,7 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .photographer_portrait {
@@ -66,7 +66,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 0 35px 30px;
+    padding: 30px;
     margin: auto;
 }
 
@@ -78,12 +78,13 @@
 .modal header img {
     cursor: pointer;
     width: 2rem;
+    align-self: flex-start;
 }
 
 .modal header h2 {
     font-size: 3rem;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
     margin: 0;
     padding: 0;
 }
@@ -93,6 +94,8 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 30px;
+    position: relative;
 }
 
 form label {
@@ -125,6 +128,7 @@ form textarea {
     padding-bottom: 1rem;
 }
 
+
 .modal header img:focus {
     outline-width: 2px;
     outline-style: solid;
@@ -147,3 +151,27 @@ form textarea {
     }
 
 }
+
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 1rem;
+    color: var(--light-clr);
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: left;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+
+  .formData[data-error-visible="true"] .text-control {
+    background-color: var(--primary-clr);
+    outline-color: var(--light-clr);
+    border-radius: 10px;
+  }
+

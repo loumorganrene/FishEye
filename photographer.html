@@ -21,7 +21,7 @@
 
     <main id="main" aria-hidden="false">
       <header class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button id="open_btn" class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </header>
 
     </main>
@@ -29,10 +29,10 @@
     <div id="contact_modal" class="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contactModal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img id="close_modal-icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" tabindex=0 onclick="closeModal()" />
+          <h2 id="contact_me">Contactez-moi</h2>
+          <img id="close_icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" tabindex=0 onclick="closeModal()" />
         </header>
-				<form name="contact_form" action="index.html" method="get">
+				<form name="contact_form" action="photographer.html?id={photographer.id}" method="get">
           <div class="formData">
             <label for="first">Prénom</label><br>
             <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
@@ -49,7 +49,7 @@
             <label for="message">Votre message</label><br>
             <textarea class="text-control" id="message" name="message" rows="8" cols="83"></textarea>
           </div>
-          <button class="contact_button" type="submit" value="Envoyer">Envoyer</button>
+          <button id="submit_btn" class="contact_button" type="submit">Envoyer</button>
 				</form>
 			</div>
 		</div>
