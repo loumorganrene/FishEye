@@ -23,7 +23,7 @@ closeIcon.addEventListener("keydown", keyboardCloseModal);
 //Open contact modal
 function displayModal() {
     main.setAttribute('aria-hidden', 'true');
-	modal.style.display = "block";
+	  modal.style.display = "block";
     modal.setAttribute('aria-hidden', 'false');
     closeIcon.focus();
 }
