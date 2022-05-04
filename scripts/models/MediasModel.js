@@ -1,15 +1,15 @@
 // Media constructor pattern
 // Parent
 export class Media {
-    constructor(data) {
-        this._id = data.id
-        this._photographer = data.photographerId
-        this._title = data.title
-        this._image = data.image
-        this._video = data.video
-        this._likes = data.likes
-        this._date = data.date
-        this._price = data.price
+    constructor(media) {
+        this._id = media.id
+        this._photographer = media.photographerId
+        this._title = media.title
+        this._image = media.image
+        this._video = media.video
+        this._likes = media.likes
+        this._date = media.date
+        this._price = media.price
     }
 
     get id() {
