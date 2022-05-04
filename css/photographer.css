@@ -1,14 +1,6 @@
-#contact_modal {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    transform: translate(-50%,0);
-    top: 50px;
-    height: 100%;
-    width: 60vw;
-}
-
+/******************************/
+/* Header photographer infos */
+/****************************/
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -58,6 +50,20 @@
     order: 3;
 }
 
+/***********************/
+/* Modal contact form */
+/*********************/
+#contact_modal {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%,0);
+    top: 50px;
+    height: 100%;
+    width: 60vw;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -81,6 +87,7 @@
     align-self: flex-start;
 }
 
+/* Hidden text for accessibility close icon */
 .sr-only {
 	border: 0 !important;
 	clip: rect(1px, 1px, 1px, 1px) !important;
@@ -165,6 +172,7 @@ form textarea {
 
 }
 
+/* Display error message if form input are invalid */
 .formData[data-error]::after {
     content: attr(data-error);
     font-size: 1rem;

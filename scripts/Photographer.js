@@ -1,6 +1,7 @@
 import { MediaApi, PhotographerApi } from "./api/Api.js";
 import { Photographer } from "./models/PhotographersModel.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
+import { ContactForm } from "./utils/ContactForm.js";
 
 export class App {
     constructor() {
@@ -20,11 +21,15 @@ export class App {
         function photographerId(photographer) {
             return photographer.id == photographerPageId
         }
-        //Formatting photographer data
+        //Format photographer data
         const photographer = new Photographer(photographerApiId)
-        //Applying template for the photogapher page banner
+
+        //Apply template for the photogapher page banner
         const Template = new PhotographerBanner(photographer)
         this.$bannerWrapper.appendChild(Template.createPhotographerBanner())
+
+        //Init eventListener contact form
+        ContactForm.init()
         //Add photographer name to the contact me title
         document.getElementById('contact_me').innerHTML = `Contactez-moi <br> ${photographer.name}`
     }

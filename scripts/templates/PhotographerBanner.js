@@ -32,7 +32,8 @@ export class PhotographerBanner {
         img.setAttribute( "src", `assets/photographers/portraits/${this._photographer.portrait}` );
         img.setAttribute( "alt", `` );
         
-        const openBtn = document.getElementById("open_btn")
+        // Photographer contact 
+        const openBtn = document.getElementById("open_contact_modal_btn")
         openBtn.setAttribute('aria-label', `Contactez ${this._photographer.name}`);
 
         docFrag.appendChild(img);

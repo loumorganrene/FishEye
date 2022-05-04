@@ -8,29 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script type="module" src="/scripts/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js" defer></script>
+    <script type="module" src="/scripts/Photographer.js"></script>
     <title>Photographer</title>
   <body>
-
+    <!-- Website header banner -->
     <header class="header" role="banner">
-      <a href="index.html">
+      <a href="index.html" target="_self">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye - Aller à la page d'accueil" />
       </a>
     </header>
 
     <main id="main" aria-hidden="false">
+      <!-- Photographer info on banner -->      
       <header class="photograph-header">
-        <button type="button" id="open_btn" class="contact_button" aria-label="" onclick="displayModal()">Contactez-moi</button>
+        <button type="button" id="open_contact_modal_btn" class="contact_button" aria-label="">Contactez-moi</button>
       </header>
 
+      <section></section>
     </main>
-
+    <!-- Contact modal form -->
     <div id="contact_modal" class="contact_modal" aria-hidden="true" role="dialog" aria-labelledby="contact_me">
 			<div class="modal">
 				<header>
           <h2 id="contact_me">Contactez-moi</h2>
-          <img id="close_icon" src="assets/icons/close.svg" aria-hidden="true" tabindex=0 onclick="closeModal()" />
+          <img id="close_icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" />
           <span class="sr-only">Fermer le formulaire de contact</span>
         </header>
 				<form name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
@@ -54,5 +55,6 @@
 				</form>
 			</div>
 		</div>
+
   </body>
 </html>
