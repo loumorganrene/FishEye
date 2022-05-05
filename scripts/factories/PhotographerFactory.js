@@ -1,17 +1,14 @@
-// function photographerFactory(data) {
-//     const { name, portrait } = data;
-
-//     const picture = `assets/photographers/${portrait}`;
-
-//     function getUserCardDOM() {
-//         const article = document.createElement( 'article' );
-//         const img = document.createElement( 'img' );
-//         img.setAttribute("src", picture)
-//         const h2 = document.createElement( 'h2' );
-//         h2.textContent = name;
-//         article.appendChild(img);
-//         article.appendChild(h2);
-//         return (article);
+// export class MediaFactory {
+//     constructor(media, type) {
+//         // Si le type correspond à l'ancienne API, alors retourne-moi l'ancien formatage
+//         if (type === 'photo') {
+//             return new Photo(media)
+//         // Sinon retourne-moi le nouveau formatage
+//         } else if (type === 'video') {
+//             return new Video(media)
+//         // Une bonne pratique est de déclencher une erreur si le format n'est pas reconnu
+//         } else {
+//             throw 'Unknown type format'
+//         }
 //     }
-//     return { name, picture, getUserCardDOM }
-// }
+//  }

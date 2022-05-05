@@ -1,7 +1,7 @@
 import { MediaApi, PhotographerApi } from "./api/Api.js";
-import { Media, Photo, Video } from "./models/MediasModel.js";
+import { Media } from "./models/MediasModel.js";
 import { Photographer } from "./models/PhotographersModel.js";
-import { PhotoCard } from "./templates/PhotoCard.js";
+import { MediaCard } from "./templates/MediaCard.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
 import { ContactForm } from "./utils/ContactForm.js";
 
@@ -12,7 +12,6 @@ export class App {
         this.photographersApi = new PhotographerApi('data/photographers.json')
         this.mediasApi = new MediaApi('data/photographers.json')
     }
-
 
     async main() {
         //Photographer infos section
@@ -39,18 +38,20 @@ export class App {
 
         // Photos & videos section
         const mediasData = await this.mediasApi.getMedias()
-        const mediasByPhotographerId = mediasData.filter(mediaPhotographerId)
-        console.log(mediasByPhotographerId)
-        console.log("------------")
         function mediaPhotographerId(media) {
             return media.photographerId == photographerPageId
         }
 
-        mediasByPhotographerId
-            .forEach(mediasByPhotographerId => {
-                const Template = new PhotoCard(mediasByPhotographerId, photographer)
+        const mediasList = mediasData.filter(mediaPhotographerId)
+
+        mediasList
+            // .map(media => new Media(media))
+            .forEach(media => {
+                const Template = new MediaCard(media, photographer)
+                // console.log(media)
+                // console.log("------------")
                 this.$mediasWrapper.appendChild(
-                    Template.createPhotoCard()
+                    Template.createMediaCard()
                 )
         })
     }
