@@ -1,10 +1,15 @@
+.photograph-header,
+#sorting-wrapper,
+.medias-wrapper {
+    margin: 0 100px;
+}
+
 /******************************/
 /* Header photographer infos */
 /****************************/
 .photograph-header {
-    background-color: #FAFAFA;
+    background-color: var(--light-clr);
     height: 300px;
-    margin: 0 100px;
     padding: 0 3rem;
 }
 
@@ -195,4 +200,78 @@ form textarea {
     outline-color: var(--light-clr);
     border-radius: 10px;
   }
+
+/******************/
+/* Media section */
+/****************/
+
+
+/* Sorting list */
+#sorting-wrapper {
+    display: flex;
+    margin-top: 1rem;
+}
+
+#sorting-wrapper label {
+    font-weight: bold;
+}
+
+/* Media card */
+.medias-wrapper {
+    display: grid;
+    grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
+    align-content: space-between;
+    column-gap: 173px;
+    row-gap: 50px;
+    margin-top: 50px;
+}
+
+.medias-wrapper article {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.media_thumbnail {
+    width: 450px;
+    height: 400px;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.media_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 450px;
+    margin-top: .4rem;
+    color: var(--primary-clr);
+}
+
+.media_title {
+    flex-basis: 380px;
+    font-weight: 300;
+}
+
+.media_like {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.media_info i {
+    font-size: 1.4rem;
+    color: var(--primary-clr);
+}
+
+.media_info > * {
+    margin: 0;
+    padding: 0;
+}
+
 

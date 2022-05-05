@@ -36,3 +36,23 @@ export class Media {
         return this._price
     }
 }
+
+export class Photo extends Media {
+    constructor(media) {
+        super(media)
+    }
+
+    get Photo() {
+        return  this._image
+    }
+}
+
+export class Video extends Media {
+    constructor(media) {
+        super(media)
+    }
+
+    get Video() {
+        return  this._video
+    }
+}

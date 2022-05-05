@@ -1,15 +1,21 @@
 @import url("photographer.css");
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
     --primary-clr: #901C1C;
     --secondary-clr: #D3573C;
     --grey-clr: #525252;
     --light-clr: #FAFAFA;
-
+    --font-family: "DM Sans", sans-serif;
 }
 
 body {
-    font-family: "DM Sans", sans-serif;
+    font-family: var(--font-family);
     margin: 0;
     height: 100%;
 }
@@ -44,6 +50,25 @@ button:focus {
     outline-offset: .3rem;
     outline-color: var(--primary-clr);
     border-radius: 10px;
+}
+/* Reset select styles */
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+  }
+
+/* Remove arrow for lower IE versions */
+select::-ms-expand {
+  display: none;
 }
 
 /* Apply if navigator support :focus-visible (mostly for safari) */

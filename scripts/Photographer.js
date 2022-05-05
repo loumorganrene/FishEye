@@ -1,6 +1,7 @@
 import { MediaApi, PhotographerApi } from "./api/Api.js";
-import { Media } from "./models/MediasModel.js";
+import { Media, Photo, Video } from "./models/MediasModel.js";
 import { Photographer } from "./models/PhotographersModel.js";
+import { PhotoCard } from "./templates/PhotoCard.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
 import { ContactForm } from "./utils/ContactForm.js";
 
@@ -45,7 +46,13 @@ export class App {
             return media.photographerId == photographerPageId
         }
 
-
+        mediasByPhotographerId
+            .forEach(mediasByPhotographerId => {
+                const Template = new PhotoCard(mediasByPhotographerId, photographer)
+                this.$mediasWrapper.appendChild(
+                    Template.createPhotoCard()
+                )
+        })
     }
 
 }

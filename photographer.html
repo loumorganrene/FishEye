@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/80a551b5fb.js" crossorigin="anonymous"></script>
     <script type="module" src="/scripts/Photographer.js"></script>
     <title>Photographer</title>
+  </head>
   <body>
     <!-- Website header banner -->
     <header class="header" role="banner">
@@ -25,7 +27,21 @@
       </header>
 
       <!-- Photographer photos & videos -->   
-      <section class="medias-wrapper"></section>
+      <section class="medias_section">
+        <div id="sorting-wrapper">
+          <label for="sorting">Trier par</label>
+          <div class="sorting-list">
+            <select id="sorting">
+              <option value="Popularité">Popularité</option>
+              <option value="Date">Date</option>
+              <option value="Titre">Titre</option>
+            </select>
+            <span class="sorting-arrow"></span>
+          </div>
+        </div>
+
+        <div class="medias-wrapper"></div>
+      </section>
     </main>
     <!-- Contact modal form -->
     <div id="contact_modal" class="contact_modal" aria-hidden="true" role="dialog" aria-labelledby="contact_me">
