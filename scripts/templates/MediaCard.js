@@ -18,16 +18,21 @@ export class MediaCard {
         $mediaCard.appendChild(a);
 
         // Media thumbnail
-        if (this._image) {
+        if (this._image) { //if its an image
             const thumbnail = document.createElement( 'img' );
             thumbnail.classList.add( "media_thumbnail" );
             thumbnail.setAttribute( "src", `assets/photographers/${this._photographer.name}/${this._image}` );
             thumbnail.setAttribute( "alt", `${this._media.title}, vue en gros plan` );        
             a.appendChild(thumbnail);
-        } else if (this._video) {
+        } else if (this._video) { //if its a video
             const videoThumbnail = document.createElement( 'video' )
+            const videoSrc = document.createElement( 'source' )
+            videoSrc.setAttribute( "src", `assets/photographers/${this._photographer.name}/${this._video}` );
+            videoSrc.setAttribute( "type", `video/mp4` );
+            videoSrc.setAttribute( "alt", `${this._media.title}, vue en gros plan` );  
             videoThumbnail.classList.add( "media_thumbnail" );
-            videoThumbnail.setAttribute( "src", `assets/photographers/${this._photographer.name}/${this._video}` );
+            videoThumbnail.setAttribute( "aria-label", `${this._media.title}, vue en gros plan` );
+            videoThumbnail.appendChild(videoSrc);
             a.appendChild(videoThumbnail);
         }
 

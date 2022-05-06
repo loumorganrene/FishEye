@@ -38,19 +38,20 @@ a, button {
 }
 
 a:focus, input:focus, textarea:focus {
-    outline-width: 2px;
+    outline-width: 1px;
     outline-style: solid;
     outline-color: var(--primary-clr);
-    border-radius: 10px;
+    border-radius: 1px;
 }
 
 button:focus {
-    outline-width: 2px;
+    outline-width: 1px;
     outline-style: solid;
     outline-offset: .3rem;
     outline-color: var(--primary-clr);
     border-radius: 10px;
 }
+
 /* Reset select styles */
 select {
     appearance: none;

@@ -27,6 +27,7 @@
 .photographer-page_desc p {
     margin: 0;
     margin-bottom: .8rem;
+    color: var(--grey-clr);
 }
 
 .photographer-page_desc .location {
@@ -45,10 +46,15 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--primary-clr);
     border-radius: 5px;
     cursor: pointer;
     margin-top: .5rem;
+}
+
+.contact_button:hover {
+    color: black;
+    background-color: var(--secondary-clr);
 }
 
 .photographer_portrait {
@@ -140,7 +146,7 @@ form input, form textarea {
     width: 98%;
     height: 4rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 1.5rem;
     padding-left: 1rem;
     margin: 0;
@@ -153,6 +159,11 @@ form textarea {
     padding-bottom: 1rem;
 }
 
+form input::placeholder,
+form textarea::placeholder {
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
 
 .modal header img:focus {
     outline-width: 2px;
@@ -185,7 +196,7 @@ form textarea {
     display: block;
     margin-top: 7px;
     margin-bottom: 7px;
-    text-align: left;
+    text-align: right;
     line-height: 0.3;
     opacity: 0;
     transition: 0.3s;
@@ -204,7 +215,10 @@ form textarea {
 /******************/
 /* Media section */
 /****************/
-
+#main {
+    margin: 0%;
+    margin-bottom: 50px;
+}
 
 /* Sorting list */
 #sorting-wrapper {

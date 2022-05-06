@@ -36,14 +36,16 @@ export class App {
         //Add photographer name to the contact me title
         document.getElementById('contact_me').innerHTML = `Contactez-moi <br> ${photographer.name}`
 
-        // Photos & videos section
+        // Medias section
         const mediasData = await this.mediasApi.getMedias()
+        //Link media.photographerId with photographer url id
         function mediaPhotographerId(media) {
             return media.photographerId == photographerPageId
         }
 
+        //Fetch allmedias data from a photographer
         const mediasList = mediasData.filter(mediaPhotographerId)
-
+        //Apply template for each media for the photographer page media section
         mediasList
             // .map(media => new Media(media))
             .forEach(media => {
@@ -55,7 +57,6 @@ export class App {
                 )
         })
     }
-
 }
 
 const app = new App()

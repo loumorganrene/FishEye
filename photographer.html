@@ -28,6 +28,7 @@
 
       <!-- Photographer photos & videos -->   
       <section class="medias_section">
+        <!-- Sorting list -->
         <div id="sorting-wrapper">
           <label for="sorting">Trier par</label>
           <div class="sorting-list">
@@ -39,7 +40,7 @@
             <span class="sorting-arrow"></span>
           </div>
         </div>
-
+        <!-- Medias grid -->
         <div class="medias-wrapper"></div>
       </section>
     </main>
@@ -54,19 +55,19 @@
 				<form name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
           <div class="formData">
             <label for="first">Prénom</label>
-            <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+            <input class="text-control" type="text" id="first" name="first" placeholder="Prénom" minlength="2" /><br>
           </div>
           <div class="formData">
             <label for="last">Nom</label>
-            <input class="text-control" type="text" id="last" name="last" minlength="2" /><br>
+            <input class="text-control" type="text" id="last" name="last" placeholder="Nom" minlength="2" /><br>
           </div>
           <div class="formData">
             <label for="email">Email</label>
-            <input class="text-control" type="email" id="email" name="email" /><br>
+            <input class="text-control" type="email" id="email" name="email" placeholder="Email" /><br>
           </div>
           <div class="formData">
             <label for="message">Votre message</label>
-            <textarea class="text-control" id="message" name="message" rows="8" cols="83"></textarea>
+            <textarea class="text-control" id="message" name="message" placeholder="Votre message" rows="8" cols="83"></textarea>
           </div>
           <button id="submit_btn" class="contact_button" type="submit">Envoyer</button>
 				</form>
