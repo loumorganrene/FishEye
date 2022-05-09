@@ -1,8 +1,21 @@
 // Media constructor pattern
+/**
+ * @typedef {Object} IMedia
+ * @property {number} id
+ * @property {number} photographerId
+ * @property {string} title
+ * @property {string | null} image
+ * @property {string | null} video
+ * @property {number} likes
+ * @property {string} date
+ * @property {number} price
+ */
 // Parent
 export class Media {
-    constructor(medias) {
+    constructor(photographer, medias) {
+        this._media = medias;
         this._id = medias.id
+        this._photographerName = photographer.name;
         this._photographer = medias.photographerId
         this._photo = medias.image
         this._video = medias.video
@@ -46,24 +59,53 @@ export class Media {
     }
 }
 
-// export class Photo extends Media {
-//     constructor(medias) {
-//         super(medias)
-//         this._image = medias.image
-//     }
+export class Photo extends Media {
+    /**
+     * 
+     * @param {Object} photographer 
+     * @param {IMedia} media 
+     */
+    constructor(photographer, media) {
+        super(photographer, media)
+        this._image = media.image
+    }
 
-//     get image() {
-//         return thumbnail.setAttribute( "src", `assets/photographers/${this._photographer.name}/${this._image}` );
-//     }
-// }
+    /**
+     * @returns {HTMLImageElement}
+     */
+    render() {
+        const thumbnail = document.createElement( 'img' );
+        thumbnail.classList.add( "media_thumbnail" );
+        thumbnail.setAttribute( "src", `assets/photographers/${this._photographerName}/${this._image}` );
+        thumbnail.setAttribute( "alt", `${this._media.title}, vue en gros plan` );
+        return thumbnail;
+    }
+}
 
-// export class Video extends Media {
-//     constructor(medias) {
-//         super(medias)
-//         this._video = medias.video
-//     }
+export class Video extends Media {
+    /**
+     * 
+     * @param {Object} photographer 
+     * @param {IMedia} media 
+     */
+    constructor(photographer, media) {
+        super(photographer, media)
+        this._video = media.video
+    }
 
-//     get video() {
-//         return thumbnail.setAttribute( "src", `assets/photographers/${this._photographer.name}/${this._video}` );
-//     }
-// }
+    /**
+     * @returns {HTMLVideoElement}
+     */
+    render() {
+        const videoThumbnail = document.createElement( 'video' )
+        const videoSrc = document.createElement( 'source' )
+        videoSrc.setAttribute( "src", `assets/photographers/${this._photographerName}/${this._video}` );
+        videoSrc.setAttribute( "type", `video/mp4` );
+        videoSrc.setAttribute( "alt", `${this._media.title}, vue en gros plan` );  
+        videoThumbnail.classList.add( "media_thumbnail" );
+        videoThumbnail.setAttribute( "aria-label", `${this._media.title}, vue en gros plan` );
+        videoThumbnail.setAttribute( "tabIndex", -1);
+        videoThumbnail.appendChild(videoSrc);
+        return videoThumbnail;
+    }
+}

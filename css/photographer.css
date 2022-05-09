@@ -32,6 +32,7 @@
 
 .photographer-page_desc .location {
     font-size: 1.3rem;
+    color: var(--primary-clr);
 }
 
 .photographer-page_desc .tagline {

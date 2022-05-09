@@ -1,5 +1,4 @@
 import { MediaApi, PhotographerApi } from "./api/Api.js";
-import { Media } from "./models/MediasModel.js";
 import { Photographer } from "./models/PhotographersModel.js";
 import { MediaCard } from "./templates/MediaCard.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
@@ -47,7 +46,6 @@ export class App {
         const mediasList = mediasData.filter(mediaPhotographerId)
         //Apply template for each media for the photographer page media section
         mediasList
-            // .map(media => new Media(media))
             .forEach(media => {
                 const Template = new MediaCard(media, photographer)
                 // console.log(media)
