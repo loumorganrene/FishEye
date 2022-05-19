@@ -28,18 +28,8 @@
 
       <!-- Photographer photos & videos -->   
       <section class="medias_section">
-        <!-- Sorting list -->
-        <div id="sorting-wrapper">
-          <label for="sorting">Trier par</label>
-          <div class="sorting-list">
-            <select id="sorting">
-              <option value="Popularité">Popularité</option>
-              <option value="Date">Date</option>
-              <option value="Titre">Titre</option>
-            </select>
-            <span class="sorting-arrow"></span>
-          </div>
-        </div>
+        <!-- Sorting list form -->
+        <div class="sorter-wrapper"></div>
         <!-- Medias grid -->
         <div class="medias-wrapper"></div>
       </section>
@@ -52,7 +42,7 @@
           <img id="close_icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" />
           <span class="sr-only">Fermer le formulaire de contact</span>
         </header>
-				<form name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
+				<form id="contact_form" name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
           <div class="formData">
             <label for="first">Prénom</label>
             <input class="text-control" type="text" id="first" name="first" placeholder="Prénom" minlength="2" /><br>

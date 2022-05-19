@@ -1,5 +1,4 @@
-// Media constructor pattern
-/**
+/** Media constructor pattern
  * @typedef {Object} IMedia
  * @property {number} id
  * @property {number} photographerId
@@ -10,15 +9,12 @@
  * @property {string} date
  * @property {number} price
  */
-// Parent
 export class Media {
     constructor(photographer, medias) {
         this._media = medias;
         this._id = medias.id
         this._photographerName = photographer.name;
         this._photographer = medias.photographerId
-        this._photo = medias.image
-        this._video = medias.video
         this._title = medias.title
         this._likes = medias.likes
         this._date = medias.date
@@ -31,15 +27,6 @@ export class Media {
 
     get photographer() {
         return this._photographer
-    }
-
-    get media() {
-        if (media.image) {
-            return this._image;
-        } else if (this.media.video) {
-            return this._video;
-        }
-        return console.error("Je pige pas");
     }
 
     get title() {

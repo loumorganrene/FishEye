@@ -1,5 +1,5 @@
 .photograph-header,
-#sorting-wrapper,
+#sorting_form,
 .medias-wrapper {
     margin: 0 100px;
 }
@@ -121,7 +121,7 @@
     padding: 0;
 }
 
-form {
+#contact_form {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -130,12 +130,12 @@ form {
     position: relative;
 }
 
-form label {
+#contact_form label {
     color: #312E2E;
     font-size: 26px;
 }
 
-form div {
+#contact_form div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -143,7 +143,7 @@ form div {
     margin-bottom: .5rem;
 }
 
-form input, form textarea {
+#contact_form input, form textarea {
     width: 98%;
     height: 4rem;
     border: none;
@@ -153,15 +153,15 @@ form input, form textarea {
     margin: 0;
 }
 
-form textarea {
+#contact_form textarea {
     resize: none;
     height: 200px;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-form input::placeholder,
-form textarea::placeholder {
+#contact_form input::placeholder,
+#contact_form textarea::placeholder {
     font-family: var(--font-family);
     font-size: 1rem;
 }
@@ -222,12 +222,14 @@ form textarea::placeholder {
 }
 
 /* Sorting list */
-#sorting-wrapper {
+#sorting_form {
     display: flex;
+    flex-direction: row;
     margin-top: 1rem;
 }
 
-#sorting-wrapper label {
+#sorting_form label {
+    font-size: 1rem;
     font-weight: bold;
 }
 
