@@ -3,7 +3,7 @@ import { Photographer } from "./models/PhotographersModel.js";
 import { MediaCard } from "./templates/MediaCard.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
 import { ContactForm } from "./utils/ContactForm.js";
-import { Sorter } from "./utils/Sorter.js";
+import { Sorter } from "./utils/SorterForm.js";
 
 export class App {
     constructor() {
@@ -49,6 +49,7 @@ export class App {
         //Init sorting
         const sorter = new Sorter(mediasList)
         sorter.render()
+
         //Apply template for each media for the photographer page media section
         mediasList
             .forEach(media => {
