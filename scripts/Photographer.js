@@ -47,7 +47,7 @@ export class App {
         const mediasList = mediasData.filter(mediaPhotographerId)
         
         //Init sorting
-        const sorter = new Sorter(mediasList)
+        const sorter = new Sorter(mediasList, photographer)
         sorter.render()
 
         //Apply template for each media for the photographer page media section
