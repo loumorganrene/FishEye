@@ -34,7 +34,7 @@ export class MediaCard {
         // Media like
         const like = document.createElement( 'p' );
         like.classList.add( "media_like" );
-        like.textContent = `${this._media.likes}`;
+        like.innerHTML = this._media.likes;
         const icon = document.createElement( 'i' ); // Font awesome heart icon
         icon.classList.add( "far" );
         icon.classList.add( "fa-heart" );
@@ -46,9 +46,11 @@ export class MediaCard {
         icon.addEventListener('click', () => {
             if (icon.classList.contains("fas")) {
                 icon.classList.replace( "fas", "far" );
+                like.innerHTML = this._media.likes;
                 this.LikesSubject.fire( 'DISLIKE' );
             } else {
                 icon.classList.replace( "far", "fas" );
+                like.innerHTML = this._media.likes + 1;
                 this.LikesSubject.fire( 'LIKE' );
             }
         })
