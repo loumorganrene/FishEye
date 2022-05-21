@@ -3,8 +3,9 @@ import { Photographer } from "./models/PhotographersModel.js";
 import { MediaCard } from "./templates/MediaCard.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
 import { ContactForm } from "./utils/ContactForm.js";
+import { LikesCounter } from "./utils/LikeCounter.js";
 import { Sorter } from "./utils/SorterForm.js";
-
+import { LikesSubject } from "./utils/LikeSubject.js";
 export class App {
     constructor() {
         this.$bannerWrapper = document.querySelector('.photograph-header')
@@ -50,12 +51,15 @@ export class App {
         const sorter = new Sorter(mediasList, photographer)
         sorter.render()
 
+        //Init Like counter
+        this.LikesSubject = new LikesSubject()
+        this.LikesCounter = new LikesCounter(mediasList, photographer)
+        this.LikesSubject.subscribe(this.LikesCounter)
+
         //Apply template for each media for the photographer page media section
         mediasList
             .forEach(media => {
-                const Template = new MediaCard(media, photographer)
-                // console.log(media)
-                // console.log("------------")
+                const Template = new MediaCard(media, photographer, this.LikesSubject)
                 this.$mediasWrapper.appendChild(
                     Template.createMediaCard()
                 )

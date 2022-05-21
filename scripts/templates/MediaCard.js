@@ -1,9 +1,9 @@
 import { MediaFactory } from "../factories/MediaFactory.js";
-
 export class MediaCard {
-    constructor (media, photographer) {
+    constructor (media, photographer, LikesSubject) {
         this._photographer = photographer
         this._media = media
+        this.LikesSubject = LikesSubject
     }
 
     createMediaCard() {
@@ -36,15 +36,26 @@ export class MediaCard {
         like.classList.add( "media_like" );
         like.textContent = `${this._media.likes}`;
         const icon = document.createElement( 'i' ); // Font awesome heart icon
-        icon.classList.add( "fa-solid" );
+        icon.classList.add( "far" );
         icon.classList.add( "fa-heart" );
         icon.setAttribute( "aria-label", "likes" );
         mediaInfos.appendChild(like);
         mediaInfos.appendChild(icon);
 
+        // Media like/dislike handling
+        icon.addEventListener('click', () => {
+            if (icon.classList.contains("fas")) {
+                icon.classList.replace( "fas", "far" );
+                this.LikesSubject.fire( 'DISLIKE' );
+            } else {
+                icon.classList.replace( "far", "fas" );
+                this.LikesSubject.fire( 'LIKE' );
+            }
+        })
+
         $mediaCard.appendChild(mediaInfos);
         docFrag.appendChild($mediaCard);
 
-        return docFrag;
+        return docFrag
     }
 }

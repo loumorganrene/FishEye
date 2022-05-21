@@ -48,7 +48,6 @@ export class Media {
 
 export class Photo extends Media {
     /**
-     * 
      * @param {Object} photographer 
      * @param {IMedia} media 
      */
@@ -71,7 +70,6 @@ export class Photo extends Media {
 
 export class Video extends Media {
     /**
-     * 
      * @param {Object} photographer 
      * @param {IMedia} media 
      */
