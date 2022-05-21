@@ -2,12 +2,11 @@ export class LikesCounter {
     constructor(mediaList, photographer) {
         this._photographer = photographer
         this._mediaList = mediaList
-        this._$likesCountContainer = document.querySelector( '.likesTotal-wrapper' )
-        this._currentTotalLikes = this._mediaList.map(media => media.likes).reduce((prev, current) => prev + current, 0)
     }
 
     update(action) {
-
+        this._$likesCountContainer = document.querySelector( '.total_like' )
+        this._currentTotalLikes = parseInt(this._$likesCountContainer.innerHTML)
         if (action === 'LIKE') {
             this._currentTotalLikes += 1
         } else if (action === 'DISLIKE') {
@@ -16,6 +15,6 @@ export class LikesCounter {
             throw "Unknow action"
         }
 
-        this._$likesCountContainer.innerHTML = `Total Like = ${this._currentTotalLikes}`
+        this._$likesCountContainer.innerHTML = `${this._currentTotalLikes}`
     }
 }

@@ -41,7 +41,8 @@ export class MediaCard {
         icon.setAttribute( "aria-label", "likes" );
         mediaInfos.appendChild(like);
         mediaInfos.appendChild(icon);
-
+        $mediaCard.appendChild(mediaInfos);
+        
         // Media like/dislike handling
         icon.addEventListener('click', () => {
             if (icon.classList.contains("fas")) {
@@ -55,7 +56,6 @@ export class MediaCard {
             }
         })
 
-        $mediaCard.appendChild(mediaInfos);
         docFrag.appendChild($mediaCard);
 
         return docFrag

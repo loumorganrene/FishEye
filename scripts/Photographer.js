@@ -6,10 +6,12 @@ import { ContactForm } from "./utils/ContactForm.js";
 import { LikesCounter } from "./utils/LikeCounter.js";
 import { Sorter } from "./utils/SorterForm.js";
 import { LikesSubject } from "./utils/LikeSubject.js";
+import { InfosSidebar } from "./templates/InfosSidebar.js";
 export class App {
     constructor() {
         this.$bannerWrapper = document.querySelector('.photograph-header')
         this.$mediasWrapper = document.querySelector('.medias-wrapper')
+        this.$main = document.querySelector('main')
         this.photographersApi = new PhotographerApi('data/photographers.json')
         this.mediasApi = new MediaApi('data/photographers.json')
     }
@@ -29,8 +31,8 @@ export class App {
         const photographer = new Photographer(photographerApiId)
 
         //Apply template for the photogapher page banner
-        const Template = new PhotographerBanner(photographer)
-        this.$bannerWrapper.appendChild(Template.createPhotographerBanner())
+        const Banner = new PhotographerBanner(photographer)
+        this.$bannerWrapper.appendChild(Banner.createPhotographerBanner())
 
         //Init eventListener contact form
         ContactForm.init()
@@ -64,6 +66,10 @@ export class App {
                     Template.createMediaCard()
                 )
         })
+
+        //Apply template for the photographer page sidebar
+        const Sidebar = new InfosSidebar(mediasList, photographer)
+        this.$main.appendChild(Sidebar.createInfosSidebar())
     }
 }
 
