@@ -1,12 +1,14 @@
-.photograph-header,
-#sorting_form,
-.medias-wrapper {
-    margin: 0 100px;
+body {
+    margin: 0 170px;
 }
 
 /******************************/
 /* Header photographer infos */
 /****************************/
+.logo {
+    height: 50px;
+    margin-left: 0;
+}
 .photograph-header {
     background-color: var(--light-clr);
     height: 300px;
@@ -236,9 +238,9 @@
 /* Media card */
 .medias-wrapper {
     display: grid;
+    justify-content: center;
     grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
-    align-content: space-between;
-    column-gap: 173px;
+    column-gap: 100px;
     row-gap: 50px;
     margin-top: 50px;
 }
@@ -308,9 +310,9 @@
     align-items: baseline;
     background: var(--secondary-clr);
     width: 300px;
+    height: 70px;
     border-radius: 10px 10px 0 0;
     font-size: 1.4rem;
-    font-weight: bold;
     color: black;
 }
 
@@ -320,6 +322,7 @@
 }
 
 .infos-wrapper .fa-heart {
+    font-size: 1.2rem;
     margin-left: .5rem;
 }
 
