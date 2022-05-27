@@ -2,11 +2,14 @@ import { MediaApi, PhotographerApi } from "./api/Api.js";
 import { Photographer } from "./models/PhotographersModel.js";
 import { MediaCard } from "./templates/MediaCard.js";
 import { PhotographerBanner } from "./templates/PhotographerBanner.js";
-import { ContactForm } from "./utils/ContactForm.js";
-import { LikesCounter } from "./utils/LikeCounter.js";
+import { ContactForm } from "./utils/ContactFormValidation.js";
+import { LikesTotal } from "./observers/LikeCounter.js";
 import { Sorter } from "./utils/SorterForm.js";
-import { LikesSubject } from "./utils/LikeSubject.js";
+import { LikesSubject } from "./observers/LikeSubject.js";
 import { InfosSidebar } from "./templates/InfosSidebar.js";
+import {
+    Lightbox
+} from "./utils/Lightbox.js";
 export class App {
     constructor() {
         this.$bannerWrapper = document.querySelector('.photograph-header')
@@ -29,11 +32,10 @@ export class App {
         }
         //Format photographer data
         const photographer = new Photographer(photographerApiId)
-
+        
         //Apply template for the photogapher page banner
         const Banner = new PhotographerBanner(photographer)
         this.$bannerWrapper.appendChild(Banner.createPhotographerBanner())
-
         //Init eventListener contact form
         ContactForm.init()
         //Add photographer name to the contact me title
@@ -45,27 +47,31 @@ export class App {
         function mediaPhotographerId(media) {
             return media.photographerId == photographerPageId
         }
-
         //Fetch allmedias data from a photographer
         const mediasList = mediasData.filter(mediaPhotographerId)
-        
+
+        //Init lightbox
+        const lightbox = new Lightbox(mediasList, photographer)
+        lightbox.init()
+
         //Init sorting
-        const sorter = new Sorter(mediasList, photographer)
+        const sorter = new Sorter(mediasList, photographer, lightbox)
         sorter.render()
 
         //Init Like counter
         this.LikesSubject = new LikesSubject()
-        this.LikesCounter = new LikesCounter(mediasList, photographer)
-        this.LikesSubject.subscribe(this.LikesCounter)
+        this.LikesTotal = new LikesTotal(mediasList, photographer)
+        this.LikesSubject.subscribe(this.LikesTotal)
 
         //Apply template for each media for the photographer page media section
         mediasList
+            .sort((a, b) => a.likes - b.likes).reverse()
             .forEach(media => {
                 const Template = new MediaCard(media, photographer, this.LikesSubject)
                 this.$mediasWrapper.appendChild(
                     Template.createMediaCard()
                 )
-        })
+            })
 
         //Apply template for the photographer page sidebar
         const Sidebar = new InfosSidebar(mediasList, photographer)
@@ -75,6 +81,3 @@ export class App {
 
 const app = new App()
 app.main()
-
-
-

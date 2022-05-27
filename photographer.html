@@ -36,12 +36,13 @@
         <sidebar class="infos-wrapper"></sidebar>
       </section>
     </main>
+
     <!-- Contact modal form -->
     <div id="contact_modal" class="contact_modal" aria-hidden="true" role="dialog" aria-labelledby="contact_me">
 			<div class="modal">
 				<header>
           <h2 id="contact_me">Contactez-moi</h2>
-          <img id="close_icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" />
+          <img id="close_contactForm-icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" />
           <span class="sr-only">Fermer le formulaire de contact</span>
         </header>
 				<form id="contact_form" name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
@@ -65,6 +66,22 @@
 				</form>
 			</div>
 		</div>
-
+    
+    <!-- Lightbox modal -->
+    <div id="lightbox_modal" class="lightbox_modal" aria-hidden="true" role="dialog" aria-label="Vue en gros plan">
+			<div class="modal">
+				<header>
+          <img id="close_lightbox-icon" class="filter-color" src="assets/icons/close.svg" alt="Fermer la visionneuse d'image en gros plan" aria-hidden="true" tabindex="0" />
+          <span class="sr-only">Fermer la visionneuse d'image en gros plan</span>
+        </header>
+        <div class="media-closeUp_wrapper">
+          <button id="prev-btn" class="fa-solid fa-chevron-left" type="button" aria-label="Image précédente"></button>
+          <span class="sr-only">Image précédente</span>
+          <div class="close_up-wrapper"></div>
+          <button id="next-btn" class="fa-solid fa-chevron-right" type="button" aria-label="Image suivante"></button>
+          <span class="sr-only">Image suivante</span>
+        </div>
+			</div>
+		</div>
   </body>
 </html>

@@ -5,6 +5,7 @@ const modal = document.getElementById("contact_modal")
 const form = document.querySelector("form")
 const formData = document.querySelectorAll(".formData")
 const openBtn = document.getElementById("open_contact_modal_btn")
+const closeIcon = document.getElementById("close_contactForm-icon")
 const submitBtn = document.getElementById("submit_btn")
 
 // form Elements
@@ -22,19 +23,18 @@ const focussableElements = `img, input, textarea, button, [tabindex]:not([tabind
 const firstFocusableElement = modal.querySelectorAll(focussableElements)[0];
 const focusableContent = modal.querySelectorAll(focussableElements);
 const lastFocusableElement = focusableContent[focusableContent.length - 1];
-const closeIcon = document.getElementById("close_icon")
 
 export class ContactForm {
 
   static init() {
     // open contact modal onclick
-    document.querySelector('#open_contact_modal_btn').addEventListener('click', displayModal)
+    openBtn.addEventListener('click', displayModal)
     // close contact modal onclick
-    document.querySelector('#close_icon').addEventListener('click', closeModal)
+    closeIcon.addEventListener('click', closeModal)
 
     // verify entry on type
     formData[0].addEventListener("input", firstNameIsValid)
-    formData[1].addEventListener("input", lastNameIsValid) 
+    formData[1].addEventListener("input", lastNameIsValid)
     formData[2].addEventListener("input", emailIsValid)
     formData[3].addEventListener("input", messageIsValid)
     // validate contact form onclick
@@ -49,7 +49,7 @@ export class ContactForm {
 }
 
 // open contact modal
-export function displayModal() {
+function displayModal() {
   main.setAttribute('aria-hidden', 'true');
   modal.style.display = "block";
   modal.setAttribute('aria-hidden', 'false');
@@ -57,7 +57,7 @@ export function displayModal() {
 }
 
 // close contact modal
-export function closeModal() {
+function closeModal() {
   main.setAttribute('aria-hidden', 'false');
   modal.style.display = "none";
   modal.setAttribute('aria-hidden', 'true');
@@ -72,12 +72,12 @@ export function keyboardNav(e) {
     return;
   }
 
-  if (e.shiftKey) {  // if shift+tab is pressed together
+  if (e.shiftKey) { // if shift+tab is pressed together
     if (document.activeElement === firstFocusableElement) {
       lastFocusableElement.focus(); // focus on last focusable element
       e.preventDefault();
     }
-  } else {  // if focus on the last focusable element
+  } else { // if focus on the last focusable element
     if (document.activeElement === lastFocusableElement) {
       firstFocusableElement.focus(); // add focus on first focusable element
       e.preventDefault();

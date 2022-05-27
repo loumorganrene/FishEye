@@ -1,4 +1,4 @@
-export class LikesCounter {
+export class LikesTotal {
     constructor(mediaList, photographer) {
         this._photographer = photographer
         this._mediaList = mediaList

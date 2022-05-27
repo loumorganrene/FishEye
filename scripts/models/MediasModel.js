@@ -62,6 +62,7 @@ export class Photo extends Media {
     render() {
         const thumbnail = document.createElement( 'img' );
         thumbnail.classList.add( "media_thumbnail" );
+        thumbnail.setAttribute( "data-id", `${this._media.id}` );
         thumbnail.setAttribute( "src", `assets/photographers/${this._photographerName}/${this._image}` );
         thumbnail.setAttribute( "alt", `${this._media.title}, vue en gros plan` );
         return thumbnail;
@@ -86,11 +87,25 @@ export class Video extends Media {
         const videoSrc = document.createElement( 'source' )
         videoSrc.setAttribute( "src", `assets/photographers/${this._photographerName}/${this._video}` );
         videoSrc.setAttribute( "type", `video/mp4` );
-        videoSrc.setAttribute( "alt", `${this._media.title}, vue en gros plan` );  
+        videoSrc.setAttribute( "alt", `${this._media.title}, vue en gros plan` );
         videoThumbnail.classList.add( "media_thumbnail" );
         videoThumbnail.setAttribute( "aria-label", `${this._media.title}, vue en gros plan` );
         videoThumbnail.setAttribute( "tabIndex", -1);
+        videoThumbnail.setAttribute( "data-id", `${this._media.id}` );
+        videoThumbnail.setAttribute( "preload", "");  
         videoThumbnail.appendChild(videoSrc);
+
+        videoThumbnail.onmouseover = () => {
+            videoThumbnail.setAttribute("loop", "");
+            videoThumbnail.play();
+        }
+
+        videoThumbnail.onmouseout = () => {
+            videoThumbnail.removeAttribute("loop", "");
+            videoThumbnail.pause();
+        }
+
         return videoThumbnail;
     }
+
 }

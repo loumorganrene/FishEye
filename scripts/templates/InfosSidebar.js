@@ -23,6 +23,7 @@ export class  InfosSidebar{
 
         // Photographer price per day
         const price = document.createElement( 'p' );
+        price.classList.add( "price" );
         price.textContent = `${this._photographer.price}€/jour`;
         
         likeWrapper.appendChild(like);

@@ -11,15 +11,8 @@ export class MediaCard {
         const $mediaCard = document.createElement('article');
         $mediaCard.classList.add( "media_card" );
 
-        // Link to lightbox modal
-        const a = document.createElement( 'a' );
-        a.classList.add( "media_thumbnail-link" );
-        a.setAttribute( "href",  `` );
-        $mediaCard.appendChild(a);
-
         // Media thumbnail
         const mediaDomElement = new MediaFactory(this._photographer, this._media).createMediaCard();
-        a.appendChild(mediaDomElement);
 
         // Media info
         const mediaInfos = document.createElement( 'div' );
@@ -41,6 +34,7 @@ export class MediaCard {
         icon.setAttribute( "aria-label", "likes" );
         mediaInfos.appendChild(like);
         mediaInfos.appendChild(icon);
+        $mediaCard.appendChild(mediaDomElement);
         $mediaCard.appendChild(mediaInfos);
         
         // Media like/dislike handling
@@ -57,7 +51,7 @@ export class MediaCard {
         })
 
         docFrag.appendChild($mediaCard);
-
+        
         return docFrag
     }
 }

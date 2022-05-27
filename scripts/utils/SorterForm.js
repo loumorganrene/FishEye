@@ -1,17 +1,17 @@
 import { MediaCard } from "../templates/MediaCard.js"
-import { LikesSubject } from "../utils/LikeSubject.js";
-import { LikesCounter } from "../utils/LikeCounter.js";
+import { LikesSubject } from "../observers/LikeSubject.js";
+import { LikesTotal } from "../observers/LikeCounter.js";
 export class Sorter {
     /**
      * @param {Object} photographer 
      * @param {Array} mediaList
      */
-    constructor(mediaList, photographer) {
+    constructor(mediaList, photographer, lightbox) {
         this._photographer = photographer
         this._media = mediaList
+        this._lightbox = lightbox
         this.$sorterFormWrapper = document.querySelector('.sorter-wrapper')
         this.$mediasWrapper = document.querySelector('.medias-wrapper')
-        // this.$totalLikewrapper = document.querySelector('.total_like')
     }
     /**
      * @description Display medias in descendant order depending on the sorter
@@ -21,50 +21,39 @@ export class Sorter {
      */
     async sorterMedias(sorter) {
         this.clearMediasWrapper()
-
-        if (sorter === 'Popular') { //sorting by descendant popularity
-            this.clearTotalLikeCounter()
-            const likesSorting = Array.from(this._media).sort((a, b) => a.likes - b.likes).reverse()
-            //Init Like counter
-            this.LikesSubject = new LikesSubject()
-            this.LikesCounter = new LikesCounter(likesSorting, this._photographer)
-            this.LikesSubject.subscribe(this.LikesCounter)
-
-            return likesSorting.forEach(media => {
-                const Template = new MediaCard(media, this._photographer, this.LikesSubject)
-                this.$mediasWrapper.appendChild(Template.createMediaCard()) })
-
-        } else if (sorter === 'Date') { //sorting by descendant date
+        this.LikesSubject = new LikesSubject()
+        if (sorter === 'Date') { //sorting by descendant date
             this.clearTotalLikeCounter()
             const dateSorting = Array.from(this._media).sort((a, b) => a.date - b.date).reverse()
             //Init Like counter
-            this.LikesSubject = new LikesSubject()
-            this.LikesCounter = new LikesCounter(dateSorting, this._photographer)
-            this.LikesSubject.subscribe(this.LikesCounter)
-
+            this.LikesTotalCounter = new LikesTotal(dateSorting, this._photographer)
+            this.LikesSubject.subscribe(this.LikesTotalCounter)
+            this._lightbox.setMediaList(dateSorting);
             return dateSorting.forEach(media => {
                 const Template = new MediaCard(media, this._photographer, this.LikesSubject)
-                this.$mediasWrapper.appendChild(Template.createMediaCard()) })
+                this.$mediasWrapper.appendChild(Template.createMediaCard())
+            })
 
         } else if (sorter === 'Title') { //sorting by alphabetical title
             this.clearTotalLikeCounter()
             const titleSorting = Array.from(this._media).sort((a, b) => a.title.localeCompare(b.title)) //non-ascii string comparaison
             //Init Like counter
-            this.LikesSubject = new LikesSubject()
-            this.LikesCounter = new LikesCounter(titleSorting, this._photographer)
-            this.LikesSubject.subscribe(this.LikesCounter)
-
+            this.LikesTotalCounter = new LikesTotal(titleSorting, this._photographer)
+            this.LikesSubject.subscribe(this.LikesTotalCounter)
+            this._lightbox.setMediaList(titleSorting);
             return titleSorting.forEach(media => {
-                const Template = new MediaCard(media, this._photographer, this.LikesSubject)
-                this.$mediasWrapper.appendChild(Template.createMediaCard()) })
-                
-        } else { //default media display
-            this.clearTotalLikeCounter()
-            this._media
-                .forEach(media => {
                 const Template = new MediaCard(media, this._photographer, this.LikesSubject)
                 this.$mediasWrapper.appendChild(Template.createMediaCard())
             })
+
+        } else { //default media display
+            this.clearTotalLikeCounter()
+            this._lightbox.setMediaList(this._media);
+            this._media
+                .forEach(media => {
+                    const Template = new MediaCard(media, this._photographer, this.LikesSubject)
+                    this.$mediasWrapper.appendChild(Template.createMediaCard())
+                })
         }
     }
     /**
@@ -97,8 +86,7 @@ export class Sorter {
           <form id="sorting_form" action="#" method="POST">
             <label for="sorting">Trier par</label>
               <select name="sorting" id="sorting">
-              <option value="Default">Sélection</option>
-                <option value="Popular">Popularité</option>
+                <option value="Default">Popularité</option>
                 <option value="Date">Date</option>
                 <option value="Title">Titre</option>
               </select>
