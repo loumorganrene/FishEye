@@ -7,9 +7,7 @@ import { LikesTotal } from "./observers/LikeCounter.js";
 import { Sorter } from "./utils/SorterForm.js";
 import { LikesSubject } from "./observers/LikeSubject.js";
 import { InfosSidebar } from "./templates/InfosSidebar.js";
-import {
-    Lightbox
-} from "./utils/Lightbox.js";
+import { Lightbox } from "./utils/Lightbox.js";
 export class App {
     constructor() {
         this.$bannerWrapper = document.querySelector('.photograph-header')
@@ -20,60 +18,56 @@ export class App {
     }
 
     async main() {
-        //Photographer infos section
+        /** Photographer infos section */
         const photographersData = await this.photographersApi.getPhotographers()
-        //Fetch photographerId from Url
-        const url = new URL(window.location.href);
+        const url = new URL(window.location.href); // fetch photographerId from Url
         const photographerPageId = url.searchParams.get('id')
-        //Fetch photographer data by id
-        const photographerApiId = photographersData.find(photographerId)
+        const photographerApiId = photographersData.find(photographerId) // fetch photographer data by id
         function photographerId(photographer) {
             return photographer.id == photographerPageId
         }
-        //Format photographer data
-        const photographer = new Photographer(photographerApiId)
-        
-        //Apply template for the photogapher page banner
+        const photographer = new Photographer(photographerApiId) // format photographer data
+
+        /** Photographer banner */
         const Banner = new PhotographerBanner(photographer)
         this.$bannerWrapper.appendChild(Banner.createPhotographerBanner())
-        //Init eventListener contact form
+
+        /** Contact form */
         ContactForm.init()
-        //Add photographer name to the contact me title
+        // display photographer's name as contact-me title
         document.getElementById('contact_me').innerHTML = `Contactez-moi <br> ${photographer.name}`
 
-        // Medias section
-        const mediasData = await this.mediasApi.getMedias()
-        //Link media.photographerId with photographer url id
-        function mediaPhotographerId(media) {
-            return media.photographerId == photographerPageId
+        /** Medias section */
+        const mediasData = await this.mediasApi.getMedias() 
+        function mediaPhotographerId(media) { 
+            return media.photographerId == photographerPageId // fetch medias list by photographer's id
         }
-        //Fetch allmedias data from a photographer
-        const mediasList = mediasData.filter(mediaPhotographerId)
+        const mediasList = mediasData.filter(mediaPhotographerId) // medias array per photographer
 
-        //Init lightbox
+        /** Lightbox */
         const lightbox = new Lightbox(mediasList, photographer)
         lightbox.init()
 
-        //Init sorting
-        const sorter = new Sorter(mediasList, photographer, lightbox)
+        /** Total likes counter */
+        const likesSubject = new LikesSubject()
+        const likesTotal = new LikesTotal(mediasList, photographer)
+        likesSubject.subscribe(likesTotal)
+
+        /** Sorting */
+        const sorter = new Sorter(mediasList, photographer, lightbox, likesSubject)
         sorter.render()
 
-        //Init Like counter
-        this.LikesSubject = new LikesSubject()
-        this.LikesTotal = new LikesTotal(mediasList, photographer)
-        this.LikesSubject.subscribe(this.LikesTotal)
-
-        //Apply template for each media for the photographer page media section
+        /** Media cards display */
         mediasList
             .sort((a, b) => a.likes - b.likes).reverse()
             .forEach(media => {
-                const Template = new MediaCard(media, photographer, this.LikesSubject)
+                const Template = new MediaCard(media, photographer, likesSubject)
                 this.$mediasWrapper.appendChild(
                     Template.createMediaCard()
                 )
             })
 
-        //Apply template for the photographer page sidebar
+        /** Price & Total likes sidebar */
         const Sidebar = new InfosSidebar(mediasList, photographer)
         this.$main.appendChild(Sidebar.createInfosSidebar())
     }

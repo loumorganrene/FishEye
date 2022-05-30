@@ -1,8 +1,13 @@
 export class PhotographerBanner {
+    /**
+     * @param {Object} photographer 
+     */
     constructor (photographer) {
         this._photographer = photographer
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createPhotographerBanner() {
         const docFrag = document.createDocumentFragment();
         const desc = document.createElement( 'div' );

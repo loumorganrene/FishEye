@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/80a551b5fb.js" crossorigin="anonymous"></script>
-    <script type="module" src="/scripts/Photographer.js"></script>
+
     <title>Photographer</title>
   </head>
   <body>
@@ -42,7 +42,9 @@
 			<div class="modal">
 				<header>
           <h2 id="contact_me">Contactez-moi</h2>
-          <img id="close_contactForm-icon" src="assets/icons/close.svg" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" />
+          <button id="close_contactForm-icon" type="button" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" >
+            <img src="assets/icons/close.svg" />
+          </button>
           <span class="sr-only">Fermer le formulaire de contact</span>
         </header>
 				<form id="contact_form" name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
@@ -68,20 +70,24 @@
 		</div>
     
     <!-- Lightbox modal -->
-    <div id="lightbox_modal" class="lightbox_modal" aria-hidden="true" role="dialog" aria-label="Vue en gros plan">
+    <div id="lightbox_modal" class="lightbox_modal" aria-hidden="true" role="dialog" aria-label="Vue en gros-plan">
 			<div class="modal">
 				<header>
-          <img id="close_lightbox-icon" class="filter-color" src="assets/icons/close.svg" alt="Fermer la visionneuse d'image en gros plan" aria-hidden="true" tabindex="0" />
+          <button id="close_lightbox-icon" type="button" alt="Fermer la visionneuse d'image en gros-plan" aria-hidden="true" tabindex="0">
+            <img class="filter-color" src="assets/icons/close.svg" />
+          </button>
           <span class="sr-only">Fermer la visionneuse d'image en gros plan</span>
         </header>
         <div class="media-closeUp_wrapper">
-          <button id="prev-btn" class="fa-solid fa-chevron-left" type="button" aria-label="Image précédente"></button>
+          <i id="prev-btn" class="fa-solid fa-chevron-left" type="button" aria-hidden="true" tabindex="0"></i>
           <span class="sr-only">Image précédente</span>
           <div class="close_up-wrapper"></div>
-          <button id="next-btn" class="fa-solid fa-chevron-right" type="button" aria-label="Image suivante"></button>
+          <i id="next-btn" class="fa-solid fa-chevron-right" type="button" aria-hidden="true" tabindex="0"></i>
           <span class="sr-only">Image suivante</span>
         </div>
 			</div>
 		</div>
+    
+    <script type="module" src="/scripts/Photographer.js"></script>
   </body>
 </html>

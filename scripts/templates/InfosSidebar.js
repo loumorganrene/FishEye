@@ -1,10 +1,17 @@
 export class  InfosSidebar{
+    /**
+     * @param {Object} photographer 
+     * @param {IMedia} media 
+     * @param {Observer} LikesSubject
+     */
     constructor (media, photographer, LikesSubject) {
         this._photographer = photographer
         this._media = media
         this.LikesSubject = LikesSubject
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createInfosSidebar() {
         const docFrag = document.createDocumentFragment();
         const $totalLikesWrapper = document.querySelector( ".infos-wrapper" );

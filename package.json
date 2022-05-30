@@ -1,0 +1,25 @@
+{
+  "name": "loupierre_6_05042022",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "husky": "^8.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loumorganrene/LouPierre_6_05042022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loumorganrene/LouPierre_6_05042022/issues"
+  },
+  "homepage": "https://github.com/loumorganrene/LouPierre_6_05042022#readme"
+}

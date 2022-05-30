@@ -1,8 +1,13 @@
 export class PhotographerCard {
+    /**
+     * @param {Object} photographer 
+     */
     constructor (photographer) {
         this._photographer = photographer
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createPhotographerCard() {
         const docFrag = document.createDocumentFragment();
         const $wrapper = document.createElement( 'article' );

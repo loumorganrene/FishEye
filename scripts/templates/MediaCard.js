@@ -1,18 +1,29 @@
 import { MediaFactory } from "../factories/MediaFactory.js";
 export class MediaCard {
+    /**
+     * @param {Object} photographer 
+     * @param {IMedia} media 
+     * @param {Observer} LikesSubject
+     */
     constructor (media, photographer, LikesSubject) {
         this._photographer = photographer
         this._media = media
         this.LikesSubject = LikesSubject
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     createMediaCard() {
         const docFrag = document.createDocumentFragment();
         const $mediaCard = document.createElement('article');
         $mediaCard.classList.add( "media_card" );
+        // Link to photographer page
+        const a = document.createElement( 'a' );
+        // a.setAttribute( "href",  "" );
 
         // Media thumbnail
         const mediaDomElement = new MediaFactory(this._photographer, this._media).createMediaCard();
+        a.appendChild(mediaDomElement);
 
         // Media info
         const mediaInfos = document.createElement( 'div' );
@@ -34,7 +45,7 @@ export class MediaCard {
         icon.setAttribute( "aria-label", "likes" );
         mediaInfos.appendChild(like);
         mediaInfos.appendChild(icon);
-        $mediaCard.appendChild(mediaDomElement);
+        $mediaCard.appendChild(a);
         $mediaCard.appendChild(mediaInfos);
         
         // Media like/dislike handling

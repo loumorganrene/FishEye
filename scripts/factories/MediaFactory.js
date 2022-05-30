@@ -1,5 +1,5 @@
 import { Photo, Video } from "../models/MediasModel.js"
-/** Media factory pattern */ 
+/** Media factory pattern */
 export class MediaFactory {
     /**
      * 

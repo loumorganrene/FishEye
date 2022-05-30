@@ -1,5 +1,12 @@
-// photographers cards constructor pattern
-// Parent
+/** Photographer constructor pattern
+ * @property {number} id
+ * @property {string | null} portrait
+ * @property {string} name
+ * @property {string} city
+ * @property {string} country
+ * @property {string} tagline
+ * @property {number} price
+ */
 export class Photographer {
     constructor(photographer) {
         this._id = photographer.id

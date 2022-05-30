@@ -5,10 +5,12 @@ class App {
         this.$photographersWrapper = document.querySelector('.photographer_section')
         this.photographersApi = new PhotographerApi('data/photographers.json')
     }
-
+    /**
+     * @returns {HTMLDOMElements}
+     */
     async main() {
+        /** Photographer cards display */
         const photographersData = await this.photographersApi.getPhotographers()
-
         photographersData
             .forEach(photographer => {
                 const Template = new PhotographerCard(photographer)

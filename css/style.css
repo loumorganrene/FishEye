@@ -37,7 +37,7 @@ a, button {
     text-decoration: none;
 }
 
-a:focus, input:focus, textarea:focus {
+a:focus, input:focus, textarea:focus, i:focus {
     outline-width: 1px;
     outline-style: solid;
     outline-color: var(--primary-clr);
@@ -73,11 +73,11 @@ select::-ms-expand {
 
 /* Apply if navigator support :focus-visible (mostly for safari) */
 @supports selector(:focus-visible){
-    a:focus, input:focus, button:focus, textarea:focus {
+    a:focus, input:focus, button:focus, textarea:focus, i:focus {
         outline: none;
     }
 
-    a:focus-visible, input:focus-visible, textarea:focus-visible {
+    a:focus-visible, input:focus-visible, textarea:focus-visible, i:focus-visible {
         outline-width: 2px;
         outline-style: solid;
         outline-color: var(--primary-clr);

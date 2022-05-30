@@ -1,5 +1,4 @@
-// DOM element selector
-const body = document.body;
+// DOMElements selector
 const main = document.getElementById("main")
 const modal = document.getElementById("contact_modal")
 const form = document.querySelector("form")
@@ -7,48 +6,43 @@ const formData = document.querySelectorAll(".formData")
 const openBtn = document.getElementById("open_contact_modal_btn")
 const closeIcon = document.getElementById("close_contactForm-icon")
 const submitBtn = document.getElementById("submit_btn")
-
-// form Elements
+// form elements selector
 const firstName = document.getElementById("first")
 const lastName = document.getElementById("last")
 const email = document.getElementById("email")
 const message = document.querySelector("textarea")
-
 // regex
-const nameRegExp = /[^0-9<>()\[\]\\.,;:\s@"][A-Za-z]{1,}/
-const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/
-
+const nameRegExp = /[^0-9<>()[\]\\.,;:\s@"][A-Za-z]{1,}/
+const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/
 // keyboard nav on contactForm modal
 const focussableElements = `img, input, textarea, button, [tabindex]:not([tabindex="-1"]`
 const firstFocusableElement = modal.querySelectorAll(focussableElements)[0];
 const focusableContent = modal.querySelectorAll(focussableElements);
 const lastFocusableElement = focusableContent[focusableContent.length - 1];
-
 export class ContactForm {
 
   static init() {
-    // open contact modal onclick
+    // open modal
     openBtn.addEventListener('click', displayModal)
-    // close contact modal onclick
+    // close modal
     closeIcon.addEventListener('click', closeModal)
-
     // verify entry on type
     formData[0].addEventListener("input", firstNameIsValid)
     formData[1].addEventListener("input", lastNameIsValid)
     formData[2].addEventListener("input", emailIsValid)
     formData[3].addEventListener("input", messageIsValid)
-    // validate contact form onclick
+    // validate contact form
     submitBtn.addEventListener("click", validate)
-    // keep focus in the contactForm modal
+    // keep focus in modal
     document.addEventListener('keydown', keyboardNav)
-    // close contact modal onkeypress "escape"
-    closeIcon.addEventListener("keydown", keyboardCloseModal)
+    // close modal onkeypress "escape"
+    closeIcon.addEventListener('keydown', keyboardCloseModal)
     // init focus on first element
     firstFocusableElement.focus();
   }
 }
 
-// open contact modal
+// open modal
 function displayModal() {
   main.setAttribute('aria-hidden', 'true');
   modal.style.display = "block";
@@ -56,7 +50,7 @@ function displayModal() {
   closeIcon.focus();
 }
 
-// close contact modal
+// close modal
 function closeModal() {
   main.setAttribute('aria-hidden', 'false');
   modal.style.display = "none";
@@ -64,8 +58,8 @@ function closeModal() {
   openBtn.focus();
 }
 
-// keyboard nav in contact modal
-export function keyboardNav(e) {
+// keyboard nav in modal
+function keyboardNav(e) {
   const isTabPressed = e.key === "Tab" || e.keyCode === 9;
   // if any other key is pressed
   if (!isTabPressed) {
@@ -85,14 +79,11 @@ export function keyboardNav(e) {
   }
 }
 
-export function keyboardCloseModal(e) {
+function keyboardCloseModal(e) {
   const isEscPressed = e.key === "Escape" || e.keyCode === 27;
-  const isEnterPressed = e.key === "Enter" || e.keyCode === 13;
-
-  if (isEscPressed || isEnterPressed) {
-    // Cancel the default action, if needed
+  if (isEscPressed) {
     e.preventDefault();
-    // Trigger the button element with a click
+    // trigger the button element with a click
     closeModal();
   }
 }
@@ -148,7 +139,6 @@ function messageIsValid() {
 
 // validate contact form
 function validate(e) {
-  // prevent closing modal & erasing user input data
   e.preventDefault();
   if (
     firstNameIsValid() &&
