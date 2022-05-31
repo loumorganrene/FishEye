@@ -33,7 +33,7 @@
         <!-- Medias grid -->
         <div class="medias-wrapper"></div>
         <!-- Likes total sidebar -->
-        <sidebar class="infos-wrapper"></sidebar>
+        <div class="infos-wrapper"></div>
       </section>
     </main>
 
@@ -42,12 +42,12 @@
 			<div class="modal">
 				<header>
           <h2 id="contact_me">Contactez-moi</h2>
-          <button id="close_contactForm-icon" type="button" alt="Fermer le formulaire de contact" aria-hidden="true" tabindex="0" >
-            <img src="assets/icons/close.svg" />
+          <button id="close_contactForm-icon" type="button" aria-hidden="true" tabindex="0" >
+            <img src="assets/icons/close.svg" alt="Fermer le formulaire de contact" />
           </button>
           <span class="sr-only">Fermer le formulaire de contact</span>
         </header>
-				<form id="contact_form" name="contact_form" action=`photographer.html?id={photographer.id}` method="get">
+				<form id="contact_form" name="contact_form" action="photographer.html?id={photographer.id}" method="get">
           <div class="formData">
             <label for="first">Prénom</label>
             <input class="text-control" type="text" id="first" name="first" placeholder="Prénom" minlength="2" /><br>
@@ -73,17 +73,17 @@
     <div id="lightbox_modal" class="lightbox_modal" aria-hidden="true" role="dialog" aria-label="Vue en gros-plan">
 			<div class="modal">
 				<header>
-          <button id="close_lightbox-icon" type="button" alt="Fermer la visionneuse d'image en gros-plan" aria-hidden="true" tabindex="0">
-            <img class="filter-color" src="assets/icons/close.svg" />
+          <button id="close_lightbox-icon" type="button" aria-labelledby="close_lightbox" aria-hidden="true" tabindex="0">
+            <img class="filter-color" src="assets/icons/close.svg" alt="Fermer la visionneuse d'image" />
           </button>
-          <span class="sr-only">Fermer la visionneuse d'image en gros plan</span>
+          <span id="close_lightbox" class="sr-only">Fermer la visionneuse d'image</span>
         </header>
         <div class="media-closeUp_wrapper">
-          <i id="prev-btn" class="fa-solid fa-chevron-left" type="button" aria-hidden="true" tabindex="0"></i>
-          <span class="sr-only">Image précédente</span>
+          <span id="prev-btn" class="fa-solid fa-chevron-left" aria-labelledby="prev-media" aria-hidden="true" tabindex="0"></span>
+          <span id="prev-media" class="sr-only">Image précédente</span>
           <div class="close_up-wrapper"></div>
-          <i id="next-btn" class="fa-solid fa-chevron-right" type="button" aria-hidden="true" tabindex="0"></i>
-          <span class="sr-only">Image suivante</span>
+          <span id="next-btn" class="fa-solid fa-chevron-right" aria-labelledby="next-media" aria-hidden="true" tabindex="0"></span>
+          <span id="next-media" class="sr-only">Image suivante</span>
         </div>
 			</div>
 		</div>

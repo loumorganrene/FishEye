@@ -66,7 +66,7 @@ export class App {
                     Template.createMediaCard()
                 )
             })
-
+        
         /** Price & Total likes sidebar */
         const Sidebar = new InfosSidebar(mediasList, photographer)
         this.$main.appendChild(Sidebar.createInfosSidebar())

@@ -19,7 +19,7 @@ export class MediaCard {
         $mediaCard.classList.add( "media_card" );
         // Link to photographer page
         const a = document.createElement( 'a' );
-        // a.setAttribute( "href",  "" );
+        a.setAttribute( "href",  "" );
 
         // Media thumbnail
         const mediaDomElement = new MediaFactory(this._photographer, this._media).createMediaCard();
@@ -61,8 +61,14 @@ export class MediaCard {
             }
         })
 
+        a.addEventListener('click', (e) => {
+            e.preventDefault()
+        })
+
         docFrag.appendChild($mediaCard);
         
         return docFrag
     }
+
+    
 }

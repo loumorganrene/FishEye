@@ -9,7 +9,7 @@ const prevIcon = document.getElementById("prev-btn")
 const nextIcon = document.getElementById("next-btn")
 
 // DOMElements selectors for keyboard navigation in the modal
-const focussableElements = `i, a, [tabindex]:not([tabindex="-1"]`
+const focussableElements = `i, a, video, [tabindex]:not([tabindex="-1"]`
 const firstFocusableElement = modal.querySelectorAll(focussableElements)[0];
 const focusableContent = modal.querySelectorAll(focussableElements);
 const lastFocusableElement = focusableContent[focusableContent.length - 1];
@@ -36,14 +36,19 @@ export class Lightbox {
 
     init() {
         // get the id of clicked media
-        $mediaWrapper.addEventListener('click', e => {
-            const media = e.target;
-            if (media.nodeName == "VIDEO" || media.nodeName == "IMG") {
-                const id = Number(media.dataset.id);
-                this._index = this._media.findIndex(media_id => media_id.id === id)
-                this.render(this._media[this._index])
-            }
-        })
+        $mediaWrapper
+            .addEventListener('click', e => {
+                const media = e.target;
+                if (!media.parentNode.classList.contains('mediaClicked')) {
+                    media.parentNode.classList.add('mediaClicked')
+                }
+                // display media depending on media.type
+                if (media.nodeName == "VIDEO" || media.nodeName == "IMG") {
+                    const id = Number(media.dataset.id);
+                    this._index = this._media.findIndex(media_id => media_id.id === id)
+                    this.render(this._media[this._index])
+                }
+            })
         // close modal onclick
         closeIcon.addEventListener('click', this.closeModal)
         // display next media onclick
@@ -60,11 +65,34 @@ export class Lightbox {
             this.render(prevMedia);
             this._index = prevMediaIndex
         })
+
+        /** 
+         * @description Keyboard navigation for accessibility 
+         */
+        $mediaWrapper.addEventListener('keydown', (e) => {
+            const media = e.target;
+            const isEnterPressed = e.key === "Enter"
+            // if any other key is pressed
+            if (!isEnterPressed) {
+                return;
+            }
+            // add class to maintain focus on the displayed media on closing
+            if (!media.classList.contains('mediaClicked') && isEnterPressed) {
+                media.classList.add('mediaClicked')
+            }
+            // display media depending on media.type
+            if (media.firstChild.nodeName == "VIDEO" || media.firstChild.nodeName == "IMG") {
+                const id = Number(media.firstChild.dataset.id);
+                this._index = this._media.findIndex(media_id => media_id.id === id)
+                this.render(this._media[this._index])
+            }
+            e.preventDefault();
+        })
         // keep focus & nav in modal
         document.addEventListener('keydown', this.keyboardNav);
         // display next media onkeydown right
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowRight') {
+        modal.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight' || e.key === 'Enter') {
                 const nextMediaIndex = this._index < this.mediaTotal - 1 ? this._index + 1 : 0
                 const nextMedia = this._media[nextMediaIndex]
                 this.render(nextMedia);
@@ -72,23 +100,23 @@ export class Lightbox {
             }
         })
         // display previous media onkeydown left
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'Enter') {
                 const prevMediaIndex = this._index > 0 ? this._index - 1 : this.mediaTotal - 1
                 const prevMedia = this._media[prevMediaIndex]
                 this.render(prevMedia);
                 this._index = prevMediaIndex
             }
         })
-        // close modal onclick
-        document.addEventListener('keydown',  (e) => {
+        // close modal onkeydown Escape in the modal
+        modal.addEventListener('keydown',  (e) => {
             if (e.key === "Escape") {
                 this.closeModal()
             }
         })
-        // close modal onkeypress "escape"
+        // close modal onkeydown Escape on closeIcon
         closeIcon.addEventListener('keydown',  (e) => {
-            if (e.key === "Escape") {
+            if (e.key === "Escape" || e.key === 'Enter') {
                 this.closeModal()
             }
         })
@@ -106,6 +134,7 @@ export class Lightbox {
         const mediaDomElement = new MediaFactory(this._photographer, media).createMediaCard()
         if (mediaDomElement.nodeName == "VIDEO") {
             mediaDomElement.setAttribute("controls", "")
+            mediaDomElement.setAttribute("tabindex", "0")
         }
 
         const title = document.createElement('h2');
@@ -145,8 +174,11 @@ export class Lightbox {
         closeIcon.setAttribute('aria-hidden', 'true')
         prevIcon.setAttribute('aria-hidden', 'true')
         nextIcon.setAttribute('aria-hidden', 'true')
-        //set focus on clicked element
-        $mediaWrapper.focus()
+        // change class to maintain focus on the displayed media
+        if (document.querySelector( ".mediaClicked" )) {
+            document.querySelector( ".mediaClicked" ).focus()
+            document.querySelector( ".mediaClicked" ).classList.toggle( "mediaClicked" )
+        }
     }
     /**
      * @description Loop the keyboard navigation in the modal

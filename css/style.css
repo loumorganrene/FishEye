@@ -37,7 +37,7 @@ a, button {
     text-decoration: none;
 }
 
-a:focus, input:focus, textarea:focus, i:focus {
+a:focus, input:focus, textarea:focus {
     outline-width: 1px;
     outline-style: solid;
     outline-color: var(--primary-clr);
@@ -63,7 +63,6 @@ select {
     font-size: inherit;
     cursor: inherit;
     line-height: inherit;
-    outline: none;
   }
 
 /* Remove arrow for lower IE versions */
@@ -73,7 +72,7 @@ select::-ms-expand {
 
 /* Apply if navigator support :focus-visible (mostly for safari) */
 @supports selector(:focus-visible){
-    a:focus, input:focus, button:focus, textarea:focus, i:focus {
+    a:focus, input:focus, button:focus, textarea:focus  {
         outline: none;
     }
 

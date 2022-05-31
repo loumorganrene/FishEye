@@ -198,7 +198,6 @@ button {
         outline-color: var(--primary-clr);
         border-radius: 10px;
     }
-
 }
 
 /* Display error message if form input are invalid */
@@ -277,6 +276,28 @@ button {
 
 #select_arrow-icon.clicked {
     transform: rotateX(180deg);
+}
+
+select:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: .3rem;
+    outline-color: var(--secondary-clr);
+    border-radius: 10px;
+}
+
+/* Apply if navigator support :focus-visible (mostly for safari) */
+@supports selector(:focus-visible){
+    select:focus {
+        outline: none;
+    }
+
+    select:focus-visible {
+        outline-width: 2px;
+        outline-style: solid;
+        outline-color: var(--primary-clr);
+        border-radius: 10px;
+    }
 }
 
 /* Media card */
@@ -439,7 +460,7 @@ button {
     object-fit: cover;
 }
 
-.media-closeUp_wrapper i {
+.media-closeUp_wrapper span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -447,4 +468,25 @@ button {
     font-size: 5rem;
     color: var(--primary-clr);
     cursor: pointer;
+}
+
+span:focus, video:focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: var(--primary-clr);
+    border-radius: 10px;
+}
+
+/* Apply if navigator support :focus-visible (mostly for safari) */
+@supports selector(:focus-visible){
+    span:focus, video:focus {
+        outline: none;
+    }
+
+    span:focus-visible, video:focus-visible {
+        outline-width: 2px;
+        outline-style: solid;
+        outline-color: var(--primary-clr);
+        border-radius: 10px;
+    }
 }
