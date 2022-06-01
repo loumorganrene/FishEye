@@ -38,19 +38,20 @@ a, button {
 }
 
 a:focus, input:focus, textarea:focus {
-    outline-width: 1px;
+    outline-width: 2px;
     outline-style: solid;
+    outline-offset: .3rem;
     outline-color: var(--primary-clr);
     border-radius: 1px;
 }
 
-button:focus {
-    outline-width: 1px;
+/* button:focus {
+    outline-width: 2px;
     outline-style: solid;
     outline-offset: .3rem;
     outline-color: var(--primary-clr);
     border-radius: 10px;
-}
+} */
 
 /* Reset select styles */
 select {
@@ -72,24 +73,25 @@ select::-ms-expand {
 
 /* Apply if navigator support :focus-visible (mostly for safari) */
 @supports selector(:focus-visible){
-    a:focus, input:focus, button:focus, textarea:focus  {
+    a:focus, input:focus, textarea:focus, i:focus  {
         outline: none;
     }
 
     a:focus-visible, input:focus-visible, textarea:focus-visible, i:focus-visible {
         outline-width: 2px;
+        outline-offset: .3rem;
         outline-style: solid;
         outline-color: var(--primary-clr);
         border-radius: 10px;
     }
 
-    button:focus-visible {
+    /* button:focus-visible {
         outline-width: 2px;
         outline-style: solid;
         outline-offset: .3rem;
         outline-color: var(--primary-clr);
         border-radius: 10px;
-    }
+    } */
 }
 
 .logo {

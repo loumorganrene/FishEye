@@ -70,7 +70,7 @@ export class Lightbox {
          * @description Keyboard navigation for accessibility 
          */
         $mediaWrapper.addEventListener('keydown', (e) => {
-            const media = e.target;
+            const media = e.target
             const isEnterPressed = e.key === "Enter"
             // if any other key is pressed
             if (!isEnterPressed) {
@@ -92,6 +92,10 @@ export class Lightbox {
         document.addEventListener('keydown', this.keyboardNav);
         // display next media onkeydown right
         modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                return;
+            }
+
             if(e.key === 'ArrowRight' || e.key === 'Enter') {
                 const nextMediaIndex = this._index < this.mediaTotal - 1 ? this._index + 1 : 0
                 const nextMedia = this._media[nextMediaIndex]
@@ -100,7 +104,11 @@ export class Lightbox {
             }
         })
         // display previous media onkeydown left
-        modal.addEventListener('keydown', (e) => {
+        modal.addEventListener('keydown', (e) => { 
+            if (e.key === 'Enter') {
+                return;
+            }
+
             if (e.key === 'ArrowLeft' || e.key === 'Enter') {
                 const prevMediaIndex = this._index > 0 ? this._index - 1 : this.mediaTotal - 1
                 const prevMedia = this._media[prevMediaIndex]
@@ -110,13 +118,23 @@ export class Lightbox {
         })
         // close modal onkeydown Escape in the modal
         modal.addEventListener('keydown',  (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                return;
+            }
+
             if (e.key === "Escape") {
                 this.closeModal()
             }
         })
         // close modal onkeydown Escape on closeIcon
         closeIcon.addEventListener('keydown',  (e) => {
-            if (e.key === "Escape" || e.key === 'Enter') {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                return;
+            }
+
+            if (e.key === "Escape") {
                 this.closeModal()
             }
         })

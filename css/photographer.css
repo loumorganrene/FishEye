@@ -94,18 +94,21 @@ button {
 #contact_modal {
     display: none;
     position: absolute;
+    background: #ffffff6c;
     z-index: 1;
     left: 50%;
     transform: translate(-50%,0);
-    top: 50px;
+    top: 13px;
     height: 100%;
-    width: 60vw;
+    width: 100vw;
+    min-width: max-content;
 }
 
 .modal {
+    position: relative;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,8 +123,15 @@ button {
 }
 
 .modal header img {
-    cursor: pointer;
     width: 2rem;
+}
+
+#close_contactForm-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 30px;
+    right: 30px;
+    width: 3rem;
     align-self: flex-start;
 }
 
@@ -178,7 +188,10 @@ button {
     font-size: 1rem;
 }
 
-.modal header img:focus {
+#submit_btn:focus,
+#open_contact_modal_btn:focus:focus,
+#close_contactForm-icon:focus,
+#close_lightbox-icon:focus {
     outline-width: 2px;
     outline-style: solid;
     outline-offset: .3rem;
@@ -186,21 +199,29 @@ button {
     border-radius: 10px;
 }
 
-/* Apply if navigator support :focus-visible (mostly for safari) */
+/** Apply if navigator support :focus-visible (mostly for safari) */
 @supports selector(:focus-visible){
-    .modal header img:focus {
+
+    #submit_btn:focus,
+    #open_contact_modal_btn:focus,
+    #close_contactForm-icon:focus,
+    #close_lightbox-icon:focus {
         outline: none;
     }
 
-    .modal header img:focus-visible {
+    #submit_btn:focus-visible,
+    #open_contact_modal_btn:focus-visible,
+    #close_contactForm-icon:focus-visible,
+    #close_lightbox-icon:focus-visible {
         outline-width: 2px;
         outline-style: solid;
+        outline-offset: .3rem;
         outline-color: var(--primary-clr);
         border-radius: 10px;
     }
 }
 
-/* Display error message if form input are invalid */
+/** Display error message if form input are invalid */
 .formData[data-error]::after {
     content: attr(data-error);
     font-size: 1rem;
@@ -247,6 +268,7 @@ button {
 #sorting_form label {
     font-size: 1rem;
     font-weight: bold;
+    margin: 10px;
 }
 
 .select-wrapper {
@@ -301,13 +323,17 @@ select:focus {
 }
 
 /* Media card */
+
 .medias-wrapper {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 100px;
-    row-gap: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 40px;
     margin-top: 50px;
+}
+
+.medias-wrapper > * {
+    flex-basis: 28%;
 }
 
 .medias-wrapper article {

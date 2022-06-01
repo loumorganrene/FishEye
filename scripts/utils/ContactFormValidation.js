@@ -44,6 +44,8 @@ export class ContactForm {
 
 // open modal
 function displayModal() {
+  document.body.style.position = 'fixed'
+  document.body.style.top = `-${window.scrollY}px`
   main.setAttribute('aria-hidden', 'true');
   modal.style.display = "block";
   modal.setAttribute('aria-hidden', 'false');
@@ -52,9 +54,17 @@ function displayModal() {
 
 // close modal
 function closeModal() {
+  document.body.style.position = ''
+  document.body.style.top = ''
+  window.scrollTo(0, parseInt(scrollY || '0') * -1)
   main.setAttribute('aria-hidden', 'false');
   modal.style.display = "none";
   modal.setAttribute('aria-hidden', 'true');
+  formData.forEach(formData => {
+    formData.setAttribute("data-error-visible", "false");
+    formData.setAttribute("data-error", "");
+  });
+  form.reset();
   openBtn.focus();
 }
 
