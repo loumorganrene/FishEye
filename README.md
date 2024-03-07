@@ -10,11 +10,13 @@ Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web.
 ### Technologies
 - HTML, CSS, JavaScript
 - HTML "sémantiques" qui décrivent leur intention autant que possible
+- ESLint est utilisé (avec les paramètres par défaut)
+- utilisation du factory pattern et d'autre design pattern si pertinent
+
+### Accessibilité
 - ajoutez des attributs ARIA aux éléments personnalisés
 - le titre des photos comme attribut “alt” et le nom du photographe pour son portrait
 - passer les tests AChecker sans “known issue” (conforme WCAG)
 - configuration de la gestion de tous les événements (KeyboardEvent.key ou KeyboardEvent.code)
 - utiliser un lecteur d'écran gratuit pour vous faire une idée de ce que représente l'utilisation du site pour une personne malvoyante
-- ESLint est utilisé (avec les paramètres par défaut)
-- utilisation du factory pattern et d'autre design pattern si pertinent
 
