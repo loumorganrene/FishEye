@@ -55,7 +55,6 @@ export class Photo extends Media {
         super(photographer, media)
         this._image = media.image
     }
-
     /**
      * @returns {HTMLImageElement}
      */
@@ -68,7 +67,6 @@ export class Photo extends Media {
         return thumbnail;
     }
 }
-
 export class Video extends Media {
     /**
      * @param {Object} photographer 
@@ -78,7 +76,6 @@ export class Video extends Media {
         super(photographer, media)
         this._video = media.video
     }
-
     /**
      * @returns {HTMLVideoElement}
      */
@@ -94,18 +91,14 @@ export class Video extends Media {
         videoThumbnail.setAttribute( "data-id", `${this._media.id}` );
         videoThumbnail.setAttribute( "preload", "");  
         videoThumbnail.appendChild(videoSrc);
-
         videoThumbnail.onmouseover = () => {
             videoThumbnail.setAttribute("loop", "");
             videoThumbnail.play();
         }
-
         videoThumbnail.onmouseout = () => {
             videoThumbnail.removeAttribute("loop", "");
             videoThumbnail.pause();
         }
-
         return videoThumbnail;
     }
-
 }

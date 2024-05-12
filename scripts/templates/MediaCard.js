@@ -47,7 +47,6 @@ export class MediaCard {
         mediaInfos.appendChild(icon);
         $mediaCard.appendChild(a);
         $mediaCard.appendChild(mediaInfos);
-        
         // Media like/dislike handling
         icon.addEventListener('click', () => {
             if (icon.classList.contains("fas")) {
@@ -60,15 +59,10 @@ export class MediaCard {
                 this.LikesSubject.fire( 'LIKE' );
             }
         })
-
         a.addEventListener('click', (e) => {
             e.preventDefault()
         })
-
         docFrag.appendChild($mediaCard);
-        
         return docFrag
-    }
-
-    
+    }  
 }

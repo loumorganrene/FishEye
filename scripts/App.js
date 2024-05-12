@@ -11,6 +11,7 @@ class App {
     async main() {
         /** Photographer cards display */
         const photographersData = await this.photographersApi.getPhotographers()
+        console.log(photographersData)
         photographersData
             .forEach(photographer => {
                 const Template = new PhotographerCard(photographer)
